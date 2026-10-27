@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>249811984+helixnebulatech@users.noreply.github.com</email>
+		<name>helixnebulatech</name>
+	</maintainer>
+	<use>
+		<flag name="cxx">Replace C++ new/delete with hardened_malloc's own implementation, which checks the size passed to sized delete (upstream CONFIG_CXX_ALLOCATOR). Makes the library depend on the C++ runtime.</flag>
+		<flag name="llvm-libunwind">Depend on LLVM's C++ runtime (libc++, libc++abi, libunwind) instead of gcc's libstdc++ when USE=cxx. Forced by LLVM profiles.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">GrapheneOS/hardened_malloc</remote-id>
+	</upstream>
+</pkgmetadata>

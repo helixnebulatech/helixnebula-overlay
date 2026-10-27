@@ -1,0 +1,7 @@
+# /etc/conf.d/stalwart
+
+# Bootstrap file: only says where the data store is. Everything else lives in the database.
+#STALWART_CONFIG="/etc/stalwart/config.json"
+
+# Extra arguments for the stalwart binary.
+#STALWART_OPTS=""

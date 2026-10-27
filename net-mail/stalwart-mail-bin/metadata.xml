@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>249811984+helixnebulatech@users.noreply.github.com</email>
+		<name>helixnebulatech</name>
+	</maintainer>
+	<longdescription>
+		Prebuilt static musl binary of Stalwart, as published by upstream, verified
+		against its keyless Sigstore signature from Stalwart's GitHub release workflow.
+		Alternative to net-mail/stalwart-mail, which builds from source.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">stalwartlabs/stalwart</remote-id>
+	</upstream>
+</pkgmetadata>

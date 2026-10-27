@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>249811984+helixnebulatech@users.noreply.github.com</email>
+		<name>helixnebulatech</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">stalwartlabs/spam-filter</remote-id>
+	</upstream>
+</pkgmetadata>

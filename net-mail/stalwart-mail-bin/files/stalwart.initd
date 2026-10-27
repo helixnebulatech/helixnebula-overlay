@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 2026 helixnebulatech
+# Distributed under the terms of the GNU General Public License v2
+
+name="Stalwart"
+description="Stalwart mail and collaboration server"
+
+: "${STALWART_CONFIG:=/etc/stalwart/config.json}"
+
+command="/usr/bin/stalwart"
+command_args="--config ${STALWART_CONFIG} ${STALWART_OPTS}"
+command_user="stalwart-mail:stalwart-mail"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+# Runs as stalwart-mail; it only needs to bind ports below 1024 (25, 465, 587, 993, 443...).
+capabilities="^cap_net_bind_service"
+umask=0077
+# Stalwart logs to standard output by default.
+output_log="/var/log/stalwart/stalwart.log"
+error_log="/var/log/stalwart/stalwart.log"
+
+depend() {
+	need net localmount
+	use dns logger
+	provide mta
+}
+
+start_pre() {
+	if [ ! -f "${STALWART_CONFIG}" ]; then
+		eerror "${STALWART_CONFIG} not found"
+		return 1
+	fi
+	checkpath -d -m 0700 -o stalwart-mail:stalwart-mail /var/lib/stalwart
+	checkpath -d -m 0750 -o stalwart-mail:stalwart-mail /var/log/stalwart
+}
