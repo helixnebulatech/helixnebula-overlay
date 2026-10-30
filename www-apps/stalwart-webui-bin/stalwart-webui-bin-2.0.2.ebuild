@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Web administration panel for the Stalwart mail server (prebuilt)"
 HOMEPAGE="https://github.com/stalwartlabs/webui"
 # No signature or attestation on GitHub: the Manifest hash is the one from the GitHub API
-# (sha256 d67e68caba02024301c79da9f15fe465de9bf5382cee54bdf9c309a97b4179a5, checked 2026-10-25).
+# (sha256 959f8e7172bcd7e8fd75d1ed1b7e66c53f80119f2bdb22dcad1cf38b92905ddf, checked 2026-10-30).
 # Stalwart reads it from disk (Application.resourceUrl = file://...): it never downloads it itself.
 SRC_URI="https://github.com/stalwartlabs/webui/releases/download/v${PV}/webui.zip -> ${P}.zip"
 S="${WORKDIR}"

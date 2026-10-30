@@ -29,8 +29,9 @@ S="${WORKDIR}"
 # statically linked Rust crates (same list as net-mail/stalwart-mail).
 LICENSE="AGPL-3 Stalwart-SELv2"
 LICENSE+="
-	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0
+	Apache-2.0 BSD-2 BSD Boost-1.0 CDLA-Permissive-2.0 ISC LGPL-2+ MIT MPL-2.0 Unicode-3.0
 	ZLIB BZIP2
+	|| ( CC0-1.0 MIT-0 )
 "
 SLOT="0"
 KEYWORDS="~amd64"
@@ -56,7 +57,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Stalwart 0.16 keeps almost all of its configuration in the database."
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ver_test "${v}" -lt 1.0; then
+			ewarn "Stalwart 1.0 uses a new database layout: a 0.16.x database is NOT upgraded"
+			ewarn "in place. Stop the service and migrate it first with stalwart-migrate:"
+			ewarn "https://stalw.art/docs/migration/upgrade-0-16/"
+			break
+		fi
+	done
+	elog "Stalwart keeps almost all of its configuration in the database."
 	elog "/etc/stalwart/config.json only says where the data store is (RocksDB in"
 	elog "/var/lib/stalwart by default). It is owned by root, so the data store cannot be"
 	elog "changed from the web admin: edit that file instead."
